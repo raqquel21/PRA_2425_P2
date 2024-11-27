@@ -37,21 +37,21 @@ int BusquedaBinaria_INV (T X, std::vector<T> V, T ini, T fin){
 
 // QuickSort
 template <typename T>
-int Partition (std::vector<T> V, T ini, T fin){
+int Partition (std::vector<T>& V, T ini, T fin){
 	T x = V[fin];
 	T i = ini;
-	for (T j = ini; j < fin -1; i++){
+	for (T j = ini; j < fin -1; j++){
 		if (V[j] <= x){
-			swap(V[i], V[j]);
+			std::swap(V[i], V[j]);
 			i++;
 		}
 	}
-	swap(V[i], V[fin]);
+	std::swap(V[i], V[fin]);
 	return i;
 }
 
 template <typename T>
-void QuickSort (std::vector <T> V, T ini, T fin){ 
+void QuickSort (std::vector <T>& V, T ini, T fin){ 
 	if (ini < fin){
 		T pivot = Partition(V, ini, fin);
 		QuickSort(V, ini, pivot -1);

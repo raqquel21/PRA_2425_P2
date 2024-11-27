@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "DyV.h"
+#include <chrono>
 
 int main(){
 // Búqueda binaria normal con int
@@ -36,5 +37,30 @@ int main(){
 	}
 	std::cout << "}" <<"\n";
 
+// QuickSort con los tiempos de ejecución
+	std::vector<int> z{3,4,5,1,6,2,9};
+	int inic = 0;
+	size_t Z = z.size();
+	int finn = Z-1;
+	std::cout << "El vector antes de ordenar con QuickSort {";
+	for (int i = 0; i < Z; i++){
+		std::cout << z[i];
+	}
+	std::cout << "}" << std::endl;
+
+	// Lo ordenamos con el método QuickSort
+	auto start = std::chrono::system_clock::now();
+	QuickSort(z, inic, finn);
+	auto end = std::chrono::system_clock::now();
+
+	std::cout << "El vector después de ordenar con QuickSort {";
+	for (int i = 0; i < Z; i++){
+		std::cout << z[i];
+	}
+	std::cout << "}" << std::endl;
+
+	std::chrono::duration<float, std::milli> duration = end -start;
+	std::cout << "Time: " << duration.count() << "ms" << std::endl;
+	
 	return 0;
 }
